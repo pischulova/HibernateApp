@@ -1,6 +1,7 @@
 import javax.persistence.*;
 
 @Entity
+@Table(name = "ORDER_ITEMS")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +17,10 @@ public class OrderItem {
 
     private int productAmount;
 
-//    public OrderItem(int productId, int productAmount) {
-//        this.product = product;
-//        this.productAmount = productAmount;
-//    }
+    public OrderItem(int productId, int productAmount) {
+        this.product = product;
+        this.productAmount = productAmount;
+    }
 
     public OrderItem() {
     }
