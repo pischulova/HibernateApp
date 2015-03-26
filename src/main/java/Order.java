@@ -13,10 +13,13 @@ public class Order {
 
     private String name;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="ORDER_ID")
     private List<OrderItem> orderItems = new ArrayList<>();
 
     public Order() {
+        this.date = new Date();
+        this.name = this.date.toString();
     }
 
     public int getId() {
@@ -49,5 +52,15 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", date=" + date +
+                ", name='" + name + '\'' +
+                ", orderItems=" + orderItems +
+                '}';
     }
 }

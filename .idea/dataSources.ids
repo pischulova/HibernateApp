@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="be692141-2961-4386-bbbd-00195458caed">
+    <database-info product="MySQL" version="5.6.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="orders-db"/>
+    <table name="order_items" schema="" catalog="orders-db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PRODUCT_AMOUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ORDER_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PRODUCT_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_o59rskkslavi8urb1m95no7y1" columns="PRODUCT_ID" ref-table="products" ref-schema="" ref-catalog="orders-db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_rx2b3nx0ajdp4s1oornjoffse" columns="ORDER_ID" ref-table="orders" ref-schema="" ref-catalog="orders-db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_o59rskkslavi8urb1m95no7y1" unique="false" columns="PRODUCT_ID"/>
+      <index name="FK_rx2b3nx0ajdp4s1oornjoffse" unique="false" columns="ORDER_ID"/>
+    </table>
+    <table name="orders" schema="" catalog="orders-db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_rx2b3nx0ajdp4s1oornjoffse" table="order_items" schema="" catalog="orders-db" columns="ORDER_ID"/>
+    </table>
+    <table name="products" schema="" catalog="orders-db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_o59rskkslavi8urb1m95no7y1" table="order_items" schema="" catalog="orders-db" columns="PRODUCT_ID"/>
+    </table>
+  </data-source>
+</component>

@@ -8,16 +8,17 @@ public class OrderItem {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "ORDER_ID")
+    @JoinColumn(name = "ORDER_ID", referencedColumnName = "id")
     private Order order;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "PRODUCT_ID")
+    @OneToOne
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "id")
     private Product product;
 
+    @Column(name="PRODUCT_AMOUNT")
     private int productAmount;
 
-    public OrderItem(int productId, int productAmount) {
+    public OrderItem(Product product, int productAmount) {
         this.product = product;
         this.productAmount = productAmount;
     }
@@ -55,5 +56,15 @@ public class OrderItem {
 
     public void setProductAmount(int productAmount) {
         this.productAmount = productAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", order=" + order +
+                ", product=" + product +
+                ", productAmount=" + productAmount +
+                '}';
     }
 }
